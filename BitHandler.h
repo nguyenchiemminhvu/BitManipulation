@@ -15,6 +15,7 @@ namespace Bit
 		static bool isEven(unsigned __int32 n);
 		static bool isOdd(unsigned __int32 n);
 		static bool isPowerOf2(unsigned __int32 n);
+		static bool isPowerOf4(unsigned __int32 n);
 
 		static unsigned __int32 enableBit(unsigned __int32 n, int position);
 		static unsigned __int32 disableBit(unsigned __int32 n, int position);
@@ -32,6 +33,9 @@ namespace Bit
 
 		static unsigned __int32 multiplyBySeven(unsigned __int32 n);
 		static unsigned __int32 occurOddTimes(unsigned __int32 *arr, unsigned __int32 size);
+
+		static unsigned __int32 addOne(unsigned __int32 n);
+		
 	};
 
 }

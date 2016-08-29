@@ -29,6 +29,23 @@ bool Bit::BitHandler::isPowerOf2(unsigned __int32 n)
 }
 
 
+bool Bit::BitHandler::isPowerOf4(unsigned __int32 n)
+{
+	if (n && !(n & (n - 1)))
+	{
+		int countDisabledBits = 0;
+		while (n > 1)
+		{
+			n >>= 1;
+			countDisabledBits++;
+		}
+		return !(countDisabledBits & 1);
+	}
+
+	return false;
+}
+
+
 unsigned __int32 Bit::BitHandler::enableBit(unsigned __int32 n, int position)
 {
 	n |= 1 << position;
@@ -188,4 +205,21 @@ unsigned __int32 Bit::BitHandler::occurOddTimes(unsigned __int32 * arr, unsigned
 		result ^= arr[i];
 
 	return result;
+}
+
+
+unsigned __int32 Bit::BitHandler::addOne(unsigned __int32 n)
+{
+	/*
+	int i = 0;
+	while ((n >> i) & 1)
+	{
+		n ^= (1 << i++);
+	}
+	n ^= 1 << i;
+
+	return n;
+	*/
+
+	return -(~n);
 }
