@@ -120,6 +120,18 @@ unsigned __int32 Bit::BitHandler::reverseBits(unsigned __int32 n)
 }
 
 
+unsigned __int32 Bit::BitHandler::rotateLeft(unsigned __int32 n)
+{
+	return 0;
+}
+
+
+unsigned __int32 Bit::BitHandler::rotateRight(unsigned __int32 n)
+{
+	return 0;
+}
+
+
 unsigned __int32 Bit::BitHandler::nextPowerOf2(unsigned __int32 n)
 {
 	if (n && !(n & (n - 1)))
@@ -222,4 +234,16 @@ unsigned __int32 Bit::BitHandler::addOne(unsigned __int32 n)
 	*/
 
 	return -(~n);
+}
+
+
+unsigned __int32 Bit::BitHandler::minimum(unsigned __int32 n1, unsigned __int32 n2)
+{
+	return n2 ^ (n1 ^ n2) & -(n1 < n2);
+}
+
+
+unsigned __int32 Bit::BitHandler::maximum(unsigned __int32 n1, unsigned __int32 n2)
+{
+	return n1 ^ (n1 ^ n2) & -(n1 < n2);
 }

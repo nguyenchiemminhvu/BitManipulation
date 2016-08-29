@@ -25,6 +25,8 @@ namespace Bit
 		static bool isBitDisabled(unsigned __int32 n, int position);
 		static unsigned __int32 countEnabledBits(unsigned __int32 n);
 		static unsigned __int32 reverseBits(unsigned __int32 n);
+		static unsigned __int32 rotateLeft(unsigned __int32 n);
+		static unsigned __int32 rotateRight(unsigned __int32 n);
 
 		static unsigned __int32 nextPowerOf2(unsigned __int32 n);
 		static bool isOddParity(unsigned __int32 n);
@@ -36,6 +38,8 @@ namespace Bit
 
 		static unsigned __int32 addOne(unsigned __int32 n);
 		
+		static unsigned __int32 minimum(unsigned __int32 n1, unsigned __int32 n2);
+		static unsigned __int32 maximum(unsigned __int32 n1, unsigned __int32 n2);
 	};
 
 }
