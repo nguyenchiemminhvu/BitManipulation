@@ -74,6 +74,35 @@ bool Bit::BitHandler::isBitDisabled(unsigned __int32 n, int position)
 }
 
 
+unsigned __int32 Bit::BitHandler::countEnabledBits(unsigned __int32 n)
+{
+	__int32 count = 0;
+
+	while (n)
+	{
+		n = n & (n - 1);
+		count++;
+	}
+
+	return count;
+}
+
+
+unsigned __int32 Bit::BitHandler::reverseBits(unsigned __int32 n)
+{
+	unsigned __int32 result = 0;
+
+	while (n)
+	{
+		result <<= 1;
+		result |= (n & 1);
+		n >>= 1;
+	}
+
+	return result;
+}
+
+
 unsigned __int32 Bit::BitHandler::nextPowerOf2(unsigned __int32 n)
 {
 	if (n && !(n & (n - 1)))
@@ -142,4 +171,21 @@ unsigned __int32 Bit::BitHandler::countDifferentBits(unsigned __int32 n1, unsign
 	}
 
 	return count;
+}
+
+
+unsigned __int32 Bit::BitHandler::multiplyBySeven(unsigned __int32 n)
+{
+	return (n << 3) - n;
+}
+
+
+unsigned __int32 Bit::BitHandler::occurOddTimes(unsigned __int32 * arr, unsigned __int32 size)
+{
+	unsigned __int32 result = 0;
+
+	for (__int32 i = 0; i < size; i++)
+		result ^= arr[i];
+
+	return result;
 }
