@@ -56,7 +56,7 @@ unsigned __int32 Bit::BitHandler::enableBit(unsigned __int32 n, int position)
 
 unsigned __int32 Bit::BitHandler::disableBit(unsigned __int32 n, int position)
 {
-	n &= !(1 << position);
+	n &= ~(1 << position);
 
 	return n;
 }
