@@ -108,13 +108,16 @@ unsigned __int32 Bit::BitHandler::countEnabledBits(unsigned __int32 n)
 unsigned __int32 Bit::BitHandler::reverseBits(unsigned __int32 n)
 {
 	unsigned __int32 result = 0;
+	int count = 0;
 
 	while (n)
 	{
 		result <<= 1;
 		result |= (n & 1);
 		n >>= 1;
+		count++;
 	}
+	result <<= ((sizeof(n) * 8) - count);
 
 	return result;
 }
@@ -122,13 +125,13 @@ unsigned __int32 Bit::BitHandler::reverseBits(unsigned __int32 n)
 
 unsigned __int32 Bit::BitHandler::rotateLeft(unsigned __int32 n)
 {
-	return 0;
+	return (n << 1) | (n >> (sizeof(n) * 8) - 1);
 }
 
 
 unsigned __int32 Bit::BitHandler::rotateRight(unsigned __int32 n)
 {
-	return 0;
+	return ((n & 1) << (sizeof(n) * 8) - 1) | (n >> 1);
 }
 
 
