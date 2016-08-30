@@ -33,6 +33,7 @@ namespace Bit
 		static unsigned __int32 swapOddEven(unsigned __int32 n);
 
 		static unsigned __int32 nextPowerOf2(unsigned __int32 n);
+		static unsigned __int32 nextSparse(unsigned __int32 n);
 		static bool isOddParity(unsigned __int32 n);
 		static bool isEvenParity(unsigned __int32 n);
 		static unsigned __int32 countDifferentBits(unsigned __int32 n1, unsigned __int32 n2);
@@ -41,6 +42,7 @@ namespace Bit
 		static unsigned __int32 occurOddTimes(unsigned __int32 *arr, unsigned __int32 size);
 
 		static unsigned __int32 addOne(unsigned __int32 n);
+		static unsigned __int32 xorWithoutOperator(unsigned __int32 n1, unsigned __int32 n2);
 		
 		static unsigned __int32 minimum(unsigned __int32 n1, unsigned __int32 n2);
 		static unsigned __int32 maximum(unsigned __int32 n1, unsigned __int32 n2);

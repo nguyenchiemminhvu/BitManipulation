@@ -193,6 +193,12 @@ unsigned __int32 Bit::BitHandler::nextPowerOf2(unsigned __int32 n)
 }
 
 
+unsigned __int32 Bit::BitHandler::nextSparse(unsigned __int32 n)
+{
+	return 0;
+}
+
+
 bool Bit::BitHandler::isOddParity(unsigned __int32 n)
 {
 	bool parity = false;
@@ -267,6 +273,12 @@ unsigned __int32 Bit::BitHandler::addOne(unsigned __int32 n)
 	*/
 
 	return -(~n);
+}
+
+
+unsigned __int32 Bit::BitHandler::xorWithoutOperator(unsigned __int32 n1, unsigned __int32 n2)
+{
+	return (n1 | n2) & (~n1 | ~n2);
 }
 
 
