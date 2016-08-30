@@ -105,7 +105,7 @@ unsigned __int32 Bit::BitHandler::countEnabledBits(unsigned __int32 n)
 }
 
 
-unsigned __int32 Bit::BitHandler::reverseBits(unsigned __int32 n)
+unsigned __int32 Bit::BitHandler::reverseOrder(unsigned __int32 n)
 {
 	unsigned __int32 result = 0;
 	int count = 0;
@@ -132,6 +132,25 @@ unsigned __int32 Bit::BitHandler::rotateLeft(unsigned __int32 n)
 unsigned __int32 Bit::BitHandler::rotateRight(unsigned __int32 n)
 {
 	return ((n & 1) << (sizeof(n) * 8) - 1) | (n >> 1);
+}
+
+	
+unsigned __int8 Bit::BitHandler::reverseByte(unsigned __int8 n)
+{
+	n = ((n & 0b11110000) >> 4) | ((n & 0b00001111) << 4);
+	n = ((n & 0b11001100) >> 2) | ((n & 0b00110011) << 2);
+	n = ((n & 0b10101010) >> 1) | ((n & 0b01010101) << 1);
+
+	return n;
+}
+
+
+unsigned __int32 Bit::BitHandler::reverseOctet(unsigned __int32 n)
+{
+	n = ((n & 0xFFFF0000) >> 16) | ((n & 0x0000FFFF) << 16);
+	n = ((n & 0xFF00FF00) >> 8) | ((n & 0x00FF00FF) << 8);
+
+	return n;
 }
 
 

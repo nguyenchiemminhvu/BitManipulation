@@ -24,9 +24,12 @@ namespace Bit
 		static bool isBitEnabled(unsigned __int32 n, int position);
 		static bool isBitDisabled(unsigned __int32 n, int position);
 		static unsigned __int32 countEnabledBits(unsigned __int32 n);
-		static unsigned __int32 reverseBits(unsigned __int32 n);
+		static unsigned __int32 reverseOrder(unsigned __int32 n);
 		static unsigned __int32 rotateLeft(unsigned __int32 n);
 		static unsigned __int32 rotateRight(unsigned __int32 n);
+		static unsigned __int8  reverseByte(unsigned __int8 n);
+		static unsigned __int32 reverseOctet(unsigned __int32 n);
+
 
 		static unsigned __int32 nextPowerOf2(unsigned __int32 n);
 		static bool isOddParity(unsigned __int32 n);
