@@ -17,6 +17,7 @@ namespace Bit
 		static bool isPowerOf2(unsigned __int32 n);
 		static bool isPowerOf4(unsigned __int32 n);
 		static bool isBinaryPalindrome(unsigned __int8 n);
+		static bool isSparse(unsigned __int32 n);
 
 		static unsigned __int32 enableBit(unsigned __int32 n, int position);
 		static unsigned __int32 disableBit(unsigned __int32 n, int position);

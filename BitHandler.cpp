@@ -64,6 +64,19 @@ bool Bit::BitHandler::isBinaryPalindrome(unsigned __int8 n)
 }
 
 
+bool Bit::BitHandler::isSparse(unsigned __int32 n)
+{
+	while (n)
+	{
+		if (n & ((n & ~(n - 1)) << 1))
+			return false;
+		n &= (n - 1);
+	}
+
+	return true;
+}
+
+
 unsigned __int32 Bit::BitHandler::enableBit(unsigned __int32 n, int position)
 {
 	n |= 1 << (position - 1);
