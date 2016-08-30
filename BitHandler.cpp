@@ -46,9 +46,27 @@ bool Bit::BitHandler::isPowerOf4(unsigned __int32 n)
 }
 
 
+bool Bit::BitHandler::isBinaryPalindrome(unsigned __int8 n)
+{
+	__int8 left = sizeof(n) * 8 - 1;
+	__int8 right = 0;
+
+	while (left > right)
+	{
+		if (((n >> left) & 1) ^ ((n >> right) & 1))
+			return false;
+
+		left--;
+		right++;
+	}
+
+	return true;
+}
+
+
 unsigned __int32 Bit::BitHandler::enableBit(unsigned __int32 n, int position)
 {
-	n |= 1 << position;
+	n |= 1 << (position - 1);
 
 	return n;
 }
@@ -56,7 +74,7 @@ unsigned __int32 Bit::BitHandler::enableBit(unsigned __int32 n, int position)
 
 unsigned __int32 Bit::BitHandler::disableBit(unsigned __int32 n, int position)
 {
-	n &= ~(1 << position);
+	n &= ~(1 << (position) - 1);
 
 	return n;
 }
@@ -154,6 +172,12 @@ unsigned __int32 Bit::BitHandler::reverseOctet(unsigned __int32 n)
 }
 
 
+unsigned __int32 Bit::BitHandler::swapOddEven(unsigned __int32 n)
+{
+	return ((n & 0xAAAAAAAA) >> 1) | ((n & 0x55555555) << 1);
+}
+
+
 unsigned __int32 Bit::BitHandler::nextPowerOf2(unsigned __int32 n)
 {
 	if (n && !(n & (n - 1)))
@@ -201,24 +225,11 @@ unsigned __int32 Bit::BitHandler::countDifferentBits(unsigned __int32 n1, unsign
 {
 	unsigned __int32 count = 0;
 
-	while (n1 && n2)
+	unsigned __int32 XOR = n1 ^ n2;
+	while (XOR)
 	{
-		count += (n1 & 1) ^ (n2 & 1);
-
-		n1 >>= 1;
-		n2 >>= 1;
-	}
-
-	while (n1)
-	{
+		XOR = XOR & (XOR - 1);
 		count++;
-		n1 >>= 1;
-	}
-
-	while (n2)
-	{
-		count++;
-		n2 >>= 1;
 	}
 
 	return count;
@@ -268,4 +279,42 @@ unsigned __int32 Bit::BitHandler::minimum(unsigned __int32 n1, unsigned __int32 
 unsigned __int32 Bit::BitHandler::maximum(unsigned __int32 n1, unsigned __int32 n2)
 {
 	return n1 ^ (n1 ^ n2) & -(n1 < n2);
+}
+
+
+void Bit::BitHandler::swapTwoNumbers(__int32 & n1, __int32 &n2)
+{
+	n1 ^= n2 ^= n1 ^= n2;
+}
+
+
+unsigned __int32 Bit::BitHandler::getTheOneNonRepeat(unsigned __int32 * arr, unsigned __int32 size)
+{
+	unsigned __int32 result = 0;
+
+	for (int i = 0; i < size; i++)
+		result ^= arr[i];
+
+	return result;
+}
+
+
+void Bit::BitHandler::getTwoNonRepeatElements(int * arr, int size, int * res1, int * res2)
+{
+	int XOR = 0;
+	*res1 = 0;
+	*res2 = 0;
+
+	for (int i = 0; i < size; i++)
+		XOR ^= arr[i];
+
+	int rightMostBit = XOR & -XOR;
+
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] & rightMostBit)
+			*res1 ^= arr[i];
+		else
+			*res2 ^= arr[i];
+	}
 }
