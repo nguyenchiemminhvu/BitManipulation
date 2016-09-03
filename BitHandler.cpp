@@ -160,9 +160,25 @@ unsigned __int32 Bit::BitHandler::rotateLeft(unsigned __int32 n)
 }
 
 
+unsigned __int32 Bit::BitHandler::rotateLeft(unsigned __int32 n, unsigned __int32 steps)
+{
+	return (n << steps) | (n >> (sizeof(n) * 8 - steps));
+}
+
+
 unsigned __int32 Bit::BitHandler::rotateRight(unsigned __int32 n)
 {
 	return ((n & 1) << (sizeof(n) * 8) - 1) | (n >> 1);
+}
+
+
+unsigned __int32 Bit::BitHandler::rotateRight(unsigned __int32 n, unsigned __int32 steps)
+{
+	unsigned __int32 temp = 0;
+	for (int i = 0; i < steps; i++)
+		temp |= (1 << i) & n;
+
+	return (temp << (sizeof(n) * 8 - steps)) | (n >> steps);
 }
 
 	
@@ -180,6 +196,16 @@ unsigned __int32 Bit::BitHandler::reverseOctet(unsigned __int32 n)
 {
 	n = ((n & 0xFFFF0000) >> 16) | ((n & 0x0000FFFF) << 16);
 	n = ((n & 0xFF00FF00) >> 8) | ((n & 0x00FF00FF) << 8);
+
+	return n;
+}
+
+
+unsigned __int32 Bit::BitHandler::reverseHalfOctet(unsigned __int32 n)
+{
+	n = ((n & 0xFFFF0000) >> 16) | ((n & 0x0000FFFF) << 16);
+	n = ((n & 0xFF00FF00) >> 8) | ((n & 0x00FF00FF) << 8);
+	n = ((n & 0xF0F0F0F0) >> 4) | ((n & 0x0F0F0F0F) << 4);
 
 	return n;
 }
@@ -342,4 +368,10 @@ void Bit::BitHandler::getTwoNonRepeatElements(int * arr, int size, int * res1, i
 		else
 			*res2 ^= arr[i];
 	}
+}
+
+
+unsigned __int32 Bit::BitHandler::getMaximumXorBetween(unsigned __int32 LEFT, unsigned __int32 RIGHT)
+{
+	return 0;
 }
